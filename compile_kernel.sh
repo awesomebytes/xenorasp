@@ -18,7 +18,21 @@ cd linux-rpi-3.8.y
 make mrproper
 make ARCH=arm O=build oldconfig
 
-# You will get asked a few questions, just hit enter... no, here we should use the updated xenomai config!
-
+# Actually compile! with -j8 on a 8 core 2GHz per core, this was like 5min
 make ARCH=arm O=build CROSS_COMPILE=../../tools-master/arm-bcm2708/arm-bcm2708hardfp-linux-gnueabi/bin/arm-bcm2708hardfp-linux-gnueabi- -j4
 
+# Install modules
+make ARCH=arm O=build INSTALL_MOD_PATH=dist modules_install
+
+# Install headers
+make ARCH=arm O=build INSTALL_HDR_PATH=dist headers_install
+find build/dist/include \( -name .install -o -name ..install.cmd \) -delete
+
+# The linux-rpi-3.8.y/build/dist directory contains the kernel headers and modules 
+# while the kernel image is located at linux-rpi-3.8.y/build/arch/arm/boot/ .
+
+# TODO: Automate this?
+# Copy the zImage to boot
+# Copy the dist to / of linux filesystem (include and lib is there)
+# Add to config.txt the line
+# kernel=zImage

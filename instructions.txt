@@ -1,0 +1,42 @@
+# Get current Raspbian image from www.raspberrypi.org/downloads
+# I recommend torrent but I don't know how to script that and I don't expect everyone to be able to do it
+
+wget http://downloads.raspberrypi.org/raspbian_latest
+
+# Be sure to check it's SHA-1 Checksum ! (in my case)
+sha1sum 2014-01-07-wheezy-raspbian.zip
+
+# Extract the image
+unzip 2014-01-07-wheezy-raspbian.zip
+
+# Install it in your SD card
+# You can get instructions here: http://elinux.org/RPi_Easy_SD_Card_Setup
+# I used ImageWriter
+sudo apt-get install usb-imagewriter
+sudo imagewriter
+# Maybe when opening it your SD card does not get recognized by the program
+# You can use Gparted (sudo apt-get install gparted) to delete all the partitions and leave an empty ext4 partition, for example
+# then write the image to the SD card
+
+# Test that it boots!
+# user / pass = pi / raspberry
+
+Now you can do
+1) download_xenorasp_stuff.sh
+2) apply_xenomai_patches.sh
+3) compile_kernel.sh
+
+Then you should get userspace xenomai code and examples in the board:
+
+wget http://download.gna.org/xenomai/stable/xenomai-2.6.2.1.tar.bz2
+tar -jxvf xenomai-2.6.2.1.tar.bz2
+cd xenomai-2.6.2.1
+# This takes a couple of minutes
+./configure
+# This takes another couple of minutes...
+make
+sudo make install
+
+cd /usr/xenomai/bin
+xeno latency
+

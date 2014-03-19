@@ -24,5 +24,5 @@ cd ..
 # Download a minimal config, it's here in the repo, rpi_updated_xenomai_config
 #wget https://www.dropbox.com/s/dcju74md5sz45at/rpi_xenomai_config
 
-# Download raspberry firmware for boot partition
-git clone -b master --depth 1 git://github.com/raspberrypi/firmware
+# raspberry firmware for boot partition could be useful, not used for now
+# git clone -b master --depth 1 git://github.com/raspberrypi/firmware
