@@ -7,7 +7,7 @@ Using raspberry linux 3.10.y and Xenomai 2.6.3
 
 
 ========
-* Instructions
+**Instructions**
 ========
 
 Get some recent raspberry pi working image, I tested:
@@ -30,7 +30,7 @@ sha1sum 2014-01-07-wheezy-raspbian.zip
 Extract the image
 ```
 unzip 2014-01-07-wheezy-raspbian.zip
-``
+```
 
 Install it in your SD card
 You can get instructions here: http://elinux.org/RPi_Easy_SD_Card_Setup
@@ -43,10 +43,10 @@ Maybe when opening it your SD card does not get recognized by the program
 You can use Gparted (sudo apt-get install gparted) to delete all the partitions and leave an empty ext4 partition, for example
 then write the image to the SD card
 
-*Test that it boots!
+**Test that it boots!**
 user / pass = pi / raspberry
 
-* I recommend checking out what every script does first!
+**I recommend checking out what every script does first!**
 Now you can execute (in this order)
 ```
 ./1_download_xenorasp_stuff.sh
