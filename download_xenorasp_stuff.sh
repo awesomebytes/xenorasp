@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# This script downloads the necesary stuff for compiling a linux 3.10 kernel
+# with xenomai 2.6.3 patches for raspberry pi
+# It takes around 3 minutes to download in a fast connection.
+
+
 # Create a directory to put all this, just in case
 mkdir xenorasp
 cd xenorasp
