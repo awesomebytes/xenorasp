@@ -16,17 +16,6 @@ git clone git://git.xenomai.org/xenomai-head.git xenomai-head
 
 # From this discussion: http://comments.gmane.org/gmane.linux.real-time.xenomai.users/18934
 # Got 3.10.34 patches... copy from my repo
-#TODO: copy command
+cp -r ../patches .
 
 # Get official Xenomai I-pipe patches (What is this I-pipe thing? http://www.xenomai.org/index.php/FAQs#What_is_this_I-pipe_thing.3F_And_what_about_Adeos.3F_Are_they_related.3F)
-# mkdir patch
-# cd patch
-# wget http://git.xenomai.org/xenomai-2.6.git/plain/ksrc/arch/arm/patches/raspberry/ipipe-core-3.8.13-raspberry-post-2.patch
-# wget http://git.xenomai.org/xenomai-2.6.git/plain/ksrc/arch/arm/patches/raspberry/ipipe-core-3.8.13-raspberry-pre-2.patch
-# cd ..
-
-# Download a minimal config, it's here in the repo, rpi_updated_xenomai_config
-#wget https://www.dropbox.com/s/dcju74md5sz45at/rpi_xenomai_config
-
-# raspberry firmware for boot partition could be useful, not used for now
-# git clone -b master --depth 1 git://github.com/raspberrypi/firmware
