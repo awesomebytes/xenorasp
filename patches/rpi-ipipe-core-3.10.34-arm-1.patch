@@ -1,0 +1,50 @@
+--- ipipe-core-3.10.18-arm-1.patch.orig	2014-03-31 23:18:37.392548258 +0100
++++ ipipe-core-3.10.18-arm-1.patch	2014-03-31 23:20:58.624548277 +0100
+@@ -1618,9 +1618,9 @@
+ +		ipipe_unstall_root();			\
+ +	} while (0)
+ +
+-+#define local_fiq_enable() ipipe_unstall_root()
+++#define local_fiq_enable() hard_local_fiq_enable_notrace() 
+ +
+-+#define local_fiq_disable() ipipe_stall_root()
+++#define local_fiq_disable() hard_local_fiq_disable_notrace() 
+ +
+ +#define arch_local_irq_restore(flags)			\
+ +	do {						\
+@@ -9293,7 +9293,7 @@
+  
+  	info.flags = VM_UNMAPPED_AREA_TOPDOWN;
+ -	info.length = len;
+- 	info.low_limit = PAGE_SIZE;
++ 	info.low_limit = FIRST_USER_ADDRESS;
+ +
+ +	if (fcse()) {
+ +		unsigned long top, bottom, shift;
+@@ -11633,14 +11633,14 @@
+ index 963d714..cbb49fc 100644
+ --- a/include/linux/clockchips.h
+ +++ b/include/linux/clockchips.h
+-@@ -112,6 +112,15 @@ struct clock_event_device {
+- 	int			irq;
++@@ -115,6 +115,15 @@ struct clock_event_device {
+  	const struct cpumask	*cpumask;
+  	struct list_head	list;
++ 	struct module		*owner;
+ +
+ +#ifdef CONFIG_IPIPE
+-+	struct ipipe_timer      *ipipe_timer;
+-+	unsigned                ipipe_stolen;
+++       struct ipipe_timer      *ipipe_timer;
+++       unsigned                ipipe_stolen;
+ +
+ +#define clockevent_ipipe_stolen(evt) ((evt)->ipipe_stolen)
+ +#else
+@@ -19355,6 +19355,7 @@
+  {
+  	return (irq < NR_IRQS) ? irq_desc + irq : NULL;
+  }
++ EXPORT_SYMBOL(irq_to_desc);
+ +#endif /* CONFIG_IPIPE */
+  
+  static void free_desc(unsigned int irq)
