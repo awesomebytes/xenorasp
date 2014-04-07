@@ -33,8 +33,10 @@ find build/dist/include \( -name .install -o -name ..install.cmd \) -delete
 
 # TODO: Automate this?
 # Copy the zImage to boot
+# cp linux-rpi-3.10.y/build/arch/arm/boot/zImage /media/YOUR_RASP_BOOT_PARTITION
 # Copy the dist to / of linux filesystem (include and lib is there)
 # cd dist
 # sudo cp -r * /media/YOUR_RASP_FILESYSTEM_ROOT 
-# Add to config.txt the line
+# 
+# Add to config.txt of your BOOT partition the line
 # kernel=zImage
