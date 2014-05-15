@@ -22,7 +22,12 @@ I recommend torrent but I don't expect everyone to be able to do it, so here is 
 wget http://downloads.raspberrypi.org/raspbian_latest
 ```
 
+Just in case I've uploaded the image I'm using here: 2014-01-07-wheezy-raspbian.zip
+
+https://drive.google.com/file/d/0B6pEkLw_Qje7c19wTlc2RnRVMlU/edit?usp=sharing
+
 Be sure to check it's SHA-1 Checksum ! (in my case)
+9d0afbf932ec22e3c29d793693f58b0406bcab86
 ```
 sha1sum 2014-01-07-wheezy-raspbian.zip
 ```
@@ -53,28 +58,30 @@ Now you can execute (in this order)
 ./2_apply_xenomai_ipipe_patches.sh
 ./3_compile_kernel.sh
 ```
+Total time in a modern computer (i7 2.0GHz) with a good internet connection (100Mb) was around 10min to execute the 3 scripts.
 
 And you should have a crosscompiled kernel for your raspberry pi!
 Now you should copy your new kernel image and related libraries to your SD card,
 this instruction are also found in 3_compile_kernel.sh if you open it in a text editor
 
 
-Copy the zImage to boot
+Copy the zImage to boot, enter the xenorasp folder (cd xenorasp) and:
 ```
 cp linux-rpi-3.10.y/build/arch/arm/boot/zImage /media/YOUR_RASP_BOOT_PARTITION
 ```
-Copy the dist to / of linux filesystem (include and lib is there)
+Your boot partition should most probably be named "boot".
+Copy the dist to / of sdcard linux filesystem (include and lib is there)
 ```
-cd dist
-sudo cp -r * /media/YOUR_RASP_FILESYSTEM_ROOT 
+sudo cp -r linux-rpi-3.10.y/build/dist/ /media/YOUR_RASP_FILESYSTEM_ROOT 
 ```
+This should be the other partition of your SD card.
 
-Add to config.txt of your BOOT partition the line
+Add to /media/YOUR_RASP_BOOT_PARTITION/config.txt the line (I added it as the first line)
 ```
 kernel=zImage
 ```
 
-
+Now put the SD card on your raspberry pi and plug it to current.
 Once up and running...
 Then you should get userspace xenomai code and examples in the board:
 
