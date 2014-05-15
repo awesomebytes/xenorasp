@@ -5,6 +5,10 @@ Raspberry Pi with Xenomai using Ipipe patches
 
 Using raspberry linux 3.10.y and Xenomai 2.6.3
 
+Further info can be found in the wiki of this project:
+
+https://github.com/awesomebytes/xenorasp/wiki
+
 
 ========
 **Instructions**
@@ -84,6 +88,10 @@ kernel=zImage
 Now put the SD card on your raspberry pi and plug it to current.
 Once up and running...
 Then you should get userspace xenomai code and examples in the board:
+
+First you may need to connect to your raspberry, you can find some instructions here:
+
+https://github.com/awesomebytes/xenorasp/wiki/Find-your-raspberry-pi-in-your-network
 
 Connect to your raspberry... I plug it into my router and search for the newest ip
 ```
