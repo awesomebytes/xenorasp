@@ -9,6 +9,7 @@ Further info can be found in the wiki of this project:
 
 https://github.com/awesomebytes/xenorasp/wiki
 
+For example pre-made images of raspbian and minibian with xenomai already included.
 
 ========
 **Instructions**
