@@ -73,7 +73,7 @@ Copy the zImage to boot, enter the xenorasp folder (cd xenorasp) and:
 ```
 cp linux-rpi-3.10.y/build/arch/arm/boot/zImage /media/YOUR_RASP_BOOT_PARTITION
 ```
-Your boot partition should most probably be named "boot".
+Your boot partition should most probably be named "boot" using raspbian, it's the one that has files like bootcode.bin config.txt or kernel.img.
 Copy the dist to / of sdcard linux filesystem (include and lib is there)
 ```
 sudo cp -r linux-rpi-3.10.y/build/dist/ /media/YOUR_RASP_FILESYSTEM_ROOT 
@@ -109,7 +109,11 @@ tar -jxvf xenomai-2.6.2.1.tar.bz2
 cd xenomai-2.6.2.1
 ```
 
-This takes a couple of minutes
+If using minibian distro and not raspbian you may need to install build-essentials
+```
+apt-get update build-essentials
+```
+Now configure, it will take a couple of minutes
 ```
 ./configure
 ```
